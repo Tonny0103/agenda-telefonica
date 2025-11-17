@@ -1,0 +1,17 @@
+# Pastas de build
+build/
+cmake-build-debug/
+cmake-build-release/
+
+# CMake cache
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Binários
+*.o
+*.a
+*.so
+*.exe
+*.out
