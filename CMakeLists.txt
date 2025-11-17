@@ -3,4 +3,8 @@ project(agenda_telefonica C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(agenda_telefonica main.c)
+add_executable(agenda_telefonica main.c
+        validadores/validadores.c
+        validadores/validadores.h
+        validadores/cpf.c
+        validadores/cpf.h)
