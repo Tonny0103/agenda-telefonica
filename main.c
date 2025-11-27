@@ -2,14 +2,14 @@
 #include "validadores/validadores.h"
 
 int main(void) {
-    char cpf[11];
+    char email[30];
 
-    printf("Digite um cpf: \n");
-    scanf("%s", cpf);
+    printf("Digite um email: \n");
+    scanf("%s", email);
 
-    int cpf_valido = valida_cpf(cpf);
+    int email_valido = valida_email(email);
 
-    if (!cpf_valido) printf("CPF invalido\n");
+    if (!email_valido) printf("Email inválido \n");
 
     return 0;
 }

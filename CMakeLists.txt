@@ -7,4 +7,5 @@ add_executable(agenda_telefonica main.c
         validadores/validadores.c
         validadores/validadores.h
         validadores/cpf.c
-        validadores/cpf.h)
+        validadores/cpf.h
+)
