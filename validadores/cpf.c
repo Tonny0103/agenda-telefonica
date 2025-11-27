@@ -15,7 +15,8 @@ int calcula_primeiro_digito_verificador(char* cpf) {
     int multiplicador = 10;
 
     for (int i = 0; i < 9; i++) {
-        soma = soma + (cpf[i] * multiplicador);
+        int numero = cpf[i] - '0';
+        soma = soma + (numero * multiplicador);
         multiplicador--;
     }
 
@@ -31,7 +32,8 @@ int calcula_segundo_digito_verificador(char* cpf) {
     int multiplicador = 11;
 
     for (int i = 0; i < 10; i++) {
-        soma = soma + (cpf[i] * multiplicador);
+        int numero = cpf[i] - '0';
+        soma = soma + (numero * multiplicador);
         multiplicador--;
     }
 
@@ -40,4 +42,16 @@ int calcula_segundo_digito_verificador(char* cpf) {
     if (resto == 0 || resto == 1) return 0;
 
     return 11 - resto;
+}
+
+int verifica_digitos_verificadores(char* cpf) {
+    int primeiro_digito = calcula_primeiro_digito_verificador(cpf);
+    int segundo_digito = calcula_segundo_digito_verificador(cpf);
+
+    int valido = 1;
+
+    if (primeiro_digito != cpf[9] - '0') valido = 0;
+    if (segundo_digito != cpf[10] - '0') valido = 0;
+
+    return valido;
 }
