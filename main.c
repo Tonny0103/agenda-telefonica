@@ -1,15 +1,8 @@
 #include <stdio.h>
-#include "validadores/validadores.h"
+#include "entidades/pessoa.h"
 
 int main(void) {
-    char email[30];
-
-    printf("Digite um email: \n");
-    scanf("%s", email);
-
-    int email_valido = valida_email(email);
-
-    if (!email_valido) printf("Email inválido \n");
+    cadastrar_pessoa();
 
     return 0;
 }

@@ -39,9 +39,8 @@ int nome_ja_cadastrado(FILE* arquivo, char* nome) {
 
 void cadastrar_pessoa() {
     FILE* arquivo = fopen("../dados/pessoas.csv", "a+");
-    if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo pessoas.csv\n");
-        fclose(arquivo);
+    if (!arquivo) {
+        perror("Erro ao abrir o arquivo pessoas.csv\n");
         return;
     }
 
@@ -49,18 +48,22 @@ void cadastrar_pessoa() {
 
     printf("==========Cadastrar Pessoa==========\n");
 
+    int nome_cadastrado;
+    
     do {
         printf("Digite o nome do pessoa: \n");
         scanf("%s", p.nome);
 
         rewind(arquivo);
 
-        if (nome_ja_cadastrado(arquivo, p.nome)) {
+	nome_cadastrado = nome_ja_cadastrado(arquivo, p.nome);
+
+        if (nome_cadastrado) {
             printf("Nome ja cadastrado! Insira outro nome...\n");
         } else if (!valida_nome(p.nome)) {
             printf("Nome invalido...\n");
         }
-    } while (nome_ja_cadastrado(arquivo, p.nome) || !valida_nome(p.nome));
+    } while (nome_cadastrado || !valida_nome(p.nome));
 
     do {
         printf("Digite o email do pessoa: \n");
@@ -88,6 +91,20 @@ void cadastrar_pessoa() {
             printf("Data de nascimento invalida! Insira uma data de nascimento valida...\n");
         }
     } while (!valida_data_nascimento(p.data_nascimento));
-
+    
+    rewind(arquivo);
     p.id = gerar_id_valido(arquivo);
+    
+    char linha[200];
+    snprintf(linha, sizeof(linha), "%d,%s,%s,%s,%s\n", p.id, p.nome, p.email, p.cpf, p.data_nascimento);
+
+    if (fputs(linha, arquivo) == EOF) {
+	printf("Erro ao escrever no arquivo...\n");
+    }
+    fclose(arquivo);
+    printf("Pessoa cadastrada com sucesso!\n");
+}
+
+pessoa* consultar_pessoa(char* nome) {
+    FILE* arquivo = fopen("../dados/pessoas.csv", "r");
 }

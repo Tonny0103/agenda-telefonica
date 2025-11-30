@@ -10,6 +10,4 @@ add_executable(agenda_telefonica main.c
         validadores/cpf.h
         entidades/pessoa.c
         entidades/pessoa.h
-        utilitarios/arquivo_util.c
-        utilitarios/arquivo_util.h
 )
