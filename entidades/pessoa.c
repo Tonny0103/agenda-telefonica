@@ -116,6 +116,7 @@ pessoa consultar_pessoa(char* nome) {
     pessoa p;
 
     int id = 0;
+    p.id = id;
     while (fgets(linha, sizeof(linha), arquivo)) {
         linha[strcspn(linha, "\n")] = '\0';
 
@@ -162,11 +163,13 @@ pessoa consultar_pessoa_por_id(int id_pessoa) {
 
     pessoa p;
 
+    int id = 0;
+    p.id = id;
     while (fgets(linha, sizeof(linha), arquivo)) {
         linha[strcspn(linha, "\n")] = '\0';
 
         char* token = strtok(linha, ",");
-        int id = atoi(token);
+        id = atoi(token);
 
         if (id == id_pessoa) {
             p.id = id;
