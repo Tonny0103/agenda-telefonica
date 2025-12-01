@@ -12,4 +12,6 @@ add_executable(agenda_telefonica main.c
         entidades/pessoa.h
         entidades/telefone.c
         entidades/telefone.h
+        menu.c
+        menu.h
 )
