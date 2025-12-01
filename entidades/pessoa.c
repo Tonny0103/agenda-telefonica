@@ -283,7 +283,7 @@ void editar_pessoa(char* nome) {
         printf("Pessoa editada com sucesso!\n");
     } else {
         remove("dados/temp.csv");
-        printf("Pessoa não encontrada.\n");
+        printf("Pessoa nao encontrada!\n");
     }
 }
 
@@ -371,7 +371,7 @@ void editar_pessoa_por_id(int id_pessoa) {
         printf("Pessoa editada com sucesso!\n");
     } else {
         remove("dados/temp.csv");
-        printf("Pessoa não encontrada.\n");
+        printf("Pessoa nao encontrada!\n");
     }
 }
 
@@ -428,7 +428,7 @@ void excluir_pessoa(char* nome) {
         printf("Pessoa excluida com sucesso!\n");
     } else {
         remove("dados/temp.csv");
-        printf("Pessoa não encontrada.\n");
+        printf("Pessoa nao encontrada.\n");
     }
 }
 
@@ -485,6 +485,6 @@ void excluir_pessoa_por_id(int id_pessoa) {
         printf("Pessoa excluida com sucesso!\n");
     } else {
         remove("dados/temp.csv");
-        printf("Pessoa não encontrada.\n");
+        printf("Pessoa nao encontrada!\n");
     }
 }

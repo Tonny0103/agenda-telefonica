@@ -48,7 +48,7 @@ void cadastrar_telefone() {
             p = consultar_pessoa(nome);
 
             if (p.id == 0) {
-                printf("Pessoa não encontrada!\n");
+                printf("Pessoa nao encontrada!\n");
                 fclose(arquivo);
                 return;
             }
@@ -64,7 +64,7 @@ void cadastrar_telefone() {
             p = consultar_pessoa_por_id(id);
 
             if (p.id == 0) {
-                printf("Pessoa não encontrada!\n");
+                printf("Pessoa nao encontrada!\n");
                 fclose(arquivo);
                 return;
             }
@@ -104,7 +104,7 @@ telefone consultar_telefone(char* nome) {
 
     pessoa p = consultar_pessoa(nome);
     if (p.id == 0) {
-        printf("Pessoa não encontrada.\n");
+        printf("Pessoa nao encontrada!\n");
         return t;
     }
 
@@ -192,7 +192,7 @@ telefone consultar_telefone_id(int id_pessoa) {
 void editar_telefone(char* nome) {
     pessoa p = consultar_pessoa(nome);
     if (p.id == 0) {
-        printf("Pessoa não encontrada!\n");
+        printf("Pessoa nao encontrada!\n");
         return;
     }
 
