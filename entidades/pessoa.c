@@ -371,3 +371,117 @@ void editar_pessoa_por_id(int id_pessoa) {
         printf("Pessoa não encontrada.\n");
     }
 }
+
+void excluir_pessoa(char* nome) {
+    FILE* arquivo = fopen("../dados/pessoas.csv", "r");
+    if (!arquivo) {
+        printf("Erro ao abrir pessoas.csv\n");
+        return;
+    }
+
+    FILE* temp = fopen("../dados/temp.csv", "w+");
+    if (!temp) {
+        printf("Erro ao criar temp.csv\n");
+        fclose(arquivo);
+        return;
+    }
+
+    char linha[256];
+    int encontrado = 0;
+
+    while (fgets(linha, sizeof(linha), arquivo)) {
+        linha[strcspn(linha, "\n")] = '\0';
+
+        pessoa p;
+        char* token = strtok(linha, ",");
+
+        p.id = atoi(token);
+
+        token = strtok(NULL, ",");
+        strncpy(p.nome, token, sizeof(p.nome));
+
+        token = strtok(NULL, ",");
+        strncpy(p.email, token, sizeof(p.email));
+
+        token = strtok(NULL, ",");
+        strncpy(p.cpf, token, sizeof(p.cpf));
+
+        token = strtok(NULL, ",");
+        strncpy(p.data_nascimento, token, sizeof(p.data_nascimento));
+
+        if (strcmp(p.nome, nome) != 0) {
+            fprintf(temp, "%d,%s,%s,%s,%s\n", p.id, p.nome, p.email, p.cpf, p.data_nascimento);
+        } else {
+            encontrado = 1;
+        }
+    }
+
+    fclose(arquivo);
+    fclose(temp);
+
+    if (encontrado) {
+        remove("../dados/pessoas.csv");
+        rename("../dados/temp.csv", "../dados/pessoas.csv");
+        printf("Pessoa excluida com sucesso!\n");
+    } else {
+        remove("../dados/temp.csv");
+        printf("Pessoa não encontrada.\n");
+    }
+}
+
+void excluir_pessoa_por_id(int id_pessoa) {
+    FILE* arquivo = fopen("../dados/pessoas.csv", "r");
+    if (!arquivo) {
+        printf("Erro ao abrir pessoas.csv\n");
+        return;
+    }
+
+    FILE* temp = fopen("../dados/temp.csv", "w+");
+    if (!temp) {
+        printf("Erro ao criar temp.csv\n");
+        fclose(arquivo);
+        return;
+    }
+
+    char linha[256];
+    int encontrado = 0;
+
+    while (fgets(linha, sizeof(linha), arquivo)) {
+        linha[strcspn(linha, "\n")] = '\0';
+
+        pessoa p;
+        char* token = strtok(linha, ",");
+
+        p.id = atoi(token);
+
+        token = strtok(NULL, ",");
+        strncpy(p.nome, token, sizeof(p.nome));
+
+        token = strtok(NULL, ",");
+        strncpy(p.email, token, sizeof(p.email));
+
+        token = strtok(NULL, ",");
+        strncpy(p.cpf, token, sizeof(p.cpf));
+
+        token = strtok(NULL, ",");
+        strncpy(p.data_nascimento, token, sizeof(p.data_nascimento));
+
+        if (p.id != id_pessoa) {
+            fprintf(temp, "%d,%s,%s,%s,%s\n", p.id, p.nome, p.email, p.cpf, p.data_nascimento);
+        } else {
+            encontrado = 1;
+        }
+    }
+
+    fclose(arquivo);
+    fclose(temp);
+
+    if (encontrado) {
+        remove("../dados/pessoas.csv");
+        rename("../dados/temp.csv", "../dados/pessoas.csv");
+        printf("Pessoa excluida com sucesso!\n");
+    } else {
+        remove("../dados/temp.csv");
+        printf("Pessoa não encontrada.\n");
+    }
+}
