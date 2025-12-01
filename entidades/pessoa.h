@@ -12,9 +12,11 @@ typedef struct {
 int gerar_id_valido(FILE* arquivo);
 int nome_ja_cadastrado(FILE* arquivo, char* nome);
 void cadastrar_pessoa();
-pessoa* consultar_pessoa(char* nome);
-pessoa* consultar_pessoa_por_id(int id);
-void editar_pessoa();
-void excluir_pessoa();
+pessoa consultar_pessoa(char* nome);
+pessoa consultar_pessoa_por_id(int id_pessoa);
+void editar_pessoa(char* nome);
+void editar_pessoa_por_id(int id_pessoa);
+void excluir_pessoa(char* nome);
+void excluir_pessoa_por_id(int id_pessoa);
 
 #endif //AGENDA_TELEFONICA_PESSOA_H
