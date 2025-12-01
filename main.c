@@ -13,7 +13,7 @@ int main(void) {
         printf("4 - Consultar\n");
         printf("5 - Sair\n");
         printf("==================================\n");
-        printf("Selecione uma opção: ");
+        printf("Selecione uma opcao: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
@@ -25,7 +25,7 @@ int main(void) {
                 printf("Encerrando...\n");
                 break;
             default:
-                printf("Opção inválida!\n");
+                printf("Opcao invalida!\n");
         }
 
     } while (opcao != 5);

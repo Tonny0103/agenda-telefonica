@@ -38,7 +38,7 @@ int nome_ja_cadastrado(FILE* arquivo, char* nome) {
 }
 
 void cadastrar_pessoa() {
-    FILE* arquivo = fopen("../dados/pessoas.csv", "a+");
+    FILE* arquivo = fopen("dados/pessoas.csv", "a+");
     if (!arquivo) {
         perror("Erro ao abrir o arquivo pessoas.csv\n");
         return;
@@ -106,7 +106,7 @@ void cadastrar_pessoa() {
 }
 
 pessoa consultar_pessoa(char* nome) {
-    FILE* arquivo = fopen("../dados/pessoas.csv", "r");
+    FILE* arquivo = fopen("dados/pessoas.csv", "r");
     if (!arquivo) {
         printf("Erro ao abrir pessoas.csv\n");
     }
@@ -154,7 +154,7 @@ pessoa consultar_pessoa(char* nome) {
 }
 
 pessoa consultar_pessoa_por_id(int id_pessoa) {
-    FILE* arquivo = fopen("../dados/pessoas.csv", "r");
+    FILE* arquivo = fopen("dados/pessoas.csv", "r");
     if (!arquivo) {
         printf("Erro ao abrir pessoas.csv\n");
     }
@@ -200,13 +200,13 @@ pessoa consultar_pessoa_por_id(int id_pessoa) {
 }
 
 void editar_pessoa(char* nome) {
-    FILE* arquivo = fopen("../dados/pessoas.csv", "r+");
+    FILE* arquivo = fopen("dados/pessoas.csv", "r+");
     if (!arquivo) {
         printf("Erro ao abrir pessoas.csv\n");
         return;
     }
 
-    FILE* temp = fopen("../dados/temp.csv", "w+");
+    FILE* temp = fopen("dados/temp.csv", "w+");
     if (!temp) {
         printf("Erro ao criar temp.csv\n");
         fclose(arquivo);
@@ -278,23 +278,23 @@ void editar_pessoa(char* nome) {
     fclose(temp);
 
     if (encontrado) {
-        remove("../dados/pessoas.csv");
-        rename("../dados/temp.csv", "../dados/pessoas.csv");
+        remove("dados/pessoas.csv");
+        rename("dados/temp.csv", "dados/pessoas.csv");
         printf("Pessoa editada com sucesso!\n");
     } else {
-        remove("../dados/temp.csv");
+        remove("dados/temp.csv");
         printf("Pessoa não encontrada.\n");
     }
 }
 
 void editar_pessoa_por_id(int id_pessoa) {
-    FILE* arquivo = fopen("../dados/pessoas.csv", "r+");
+    FILE* arquivo = fopen("dados/pessoas.csv", "r+");
     if (!arquivo) {
         printf("Erro ao abrir pessoas.csv\n");
         return;
     }
 
-    FILE* temp = fopen("../dados/temp.csv", "w+");
+    FILE* temp = fopen("dados/temp.csv", "w+");
     if (!temp) {
         printf("Erro ao criar temp.csv\n");
         fclose(arquivo);
@@ -366,23 +366,23 @@ void editar_pessoa_por_id(int id_pessoa) {
     fclose(temp);
 
     if (encontrado) {
-        remove("../dados/pessoas.csv");
-        rename("../dados/temp.csv", "../dados/pessoas.csv");
+        remove("dados/pessoas.csv");
+        rename("dados/temp.csv", "dados/pessoas.csv");
         printf("Pessoa editada com sucesso!\n");
     } else {
-        remove("../dados/temp.csv");
+        remove("dados/temp.csv");
         printf("Pessoa não encontrada.\n");
     }
 }
 
 void excluir_pessoa(char* nome) {
-    FILE* arquivo = fopen("../dados/pessoas.csv", "r");
+    FILE* arquivo = fopen("dados/pessoas.csv", "r");
     if (!arquivo) {
         printf("Erro ao abrir pessoas.csv\n");
         return;
     }
 
-    FILE* temp = fopen("../dados/temp.csv", "w+");
+    FILE* temp = fopen("dados/temp.csv", "w+");
     if (!temp) {
         printf("Erro ao criar temp.csv\n");
         fclose(arquivo);
@@ -423,23 +423,23 @@ void excluir_pessoa(char* nome) {
     fclose(temp);
 
     if (encontrado) {
-        remove("../dados/pessoas.csv");
-        rename("../dados/temp.csv", "../dados/pessoas.csv");
+        remove("dados/pessoas.csv");
+        rename("dados/temp.csv", "dados/pessoas.csv");
         printf("Pessoa excluida com sucesso!\n");
     } else {
-        remove("../dados/temp.csv");
+        remove("dados/temp.csv");
         printf("Pessoa não encontrada.\n");
     }
 }
 
 void excluir_pessoa_por_id(int id_pessoa) {
-    FILE* arquivo = fopen("../dados/pessoas.csv", "r");
+    FILE* arquivo = fopen("dados/pessoas.csv", "r");
     if (!arquivo) {
         printf("Erro ao abrir pessoas.csv\n");
         return;
     }
 
-    FILE* temp = fopen("../dados/temp.csv", "w+");
+    FILE* temp = fopen("dados/temp.csv", "w+");
     if (!temp) {
         printf("Erro ao criar temp.csv\n");
         fclose(arquivo);
@@ -480,11 +480,11 @@ void excluir_pessoa_por_id(int id_pessoa) {
     fclose(temp);
 
     if (encontrado) {
-        remove("../dados/pessoas.csv");
-        rename("../dados/temp.csv", "../dados/pessoas.csv");
+        remove("dados/pessoas.csv");
+        rename("dados/temp.csv", "dados/pessoas.csv");
         printf("Pessoa excluida com sucesso!\n");
     } else {
-        remove("../dados/temp.csv");
+        remove("dados/temp.csv");
         printf("Pessoa não encontrada.\n");
     }
 }

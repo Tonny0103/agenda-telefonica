@@ -23,7 +23,7 @@ int gerar_id_valido_telefone() {
 }
 
 void cadastrar_telefone() {
-    FILE* arquivo = fopen("../dados/telefones.csv", "a+");
+    FILE* arquivo = fopen("dados/telefones.csv", "a+");
     if (!arquivo) {
         perror("Erro ao abrir o arquivo telefones.csv");
         return;
@@ -108,7 +108,7 @@ telefone consultar_telefone(char* nome) {
         return t;
     }
 
-    FILE* arquivo = fopen("../dados/telefones.csv", "r");
+    FILE* arquivo = fopen("dados/telefones.csv", "r");
     if (!arquivo) {
         printf("Erro ao abrir telefones.csv\n");
         return t;
@@ -151,7 +151,7 @@ telefone consultar_telefone_id(int id_pessoa) {
     t.id_pessoa = 0;
     t.telefone[0] = '\0';
 
-    FILE* arquivo = fopen("../dados/telefones.csv", "r");
+    FILE* arquivo = fopen("dados/telefones.csv", "r");
     if (!arquivo) {
         printf("Erro ao abrir telefones.csv\n");
         return t;
@@ -196,13 +196,13 @@ void editar_telefone(char* nome) {
         return;
     }
 
-    FILE* arquivo = fopen("../dados/telefones.csv", "r");
+    FILE* arquivo = fopen("dados/telefones.csv", "r");
     if (!arquivo) {
         printf("Erro ao abrir telefones.csv\n");
         return;
     }
 
-    FILE* temp = fopen("../dados/temp.csv", "w+");
+    FILE* temp = fopen("dados/temp.csv", "w+");
     if (!temp) {
         printf("Erro ao criar temp.csv\n");
         fclose(arquivo);
@@ -241,23 +241,23 @@ void editar_telefone(char* nome) {
     fclose(temp);
 
     if (encontrado) {
-        remove("../dados/telefones.csv");
-        rename("../dados/temp.csv", "../dados/telefones.csv");
+        remove("dados/telefones.csv");
+        rename("dados/temp.csv", "dados/telefones.csv");
         printf("Telefone editado com sucesso!\n");
     } else {
-        remove("../dados/temp.csv");
+        remove("dados/temp.csv");
         printf("Telefone não encontrado para este nome.\n");
     }
 }
 
 void editar_telefone_id(int id_pessoa) {
-    FILE* arquivo = fopen("../dados/telefones.csv", "r");
+    FILE* arquivo = fopen("dados/telefones.csv", "r");
     if (!arquivo) {
         printf("Erro ao abrir telefones.csv\n");
         return;
     }
 
-    FILE* temp = fopen("../dados/temp.csv", "w+");
+    FILE* temp = fopen("dados/temp.csv", "w+");
     if (!temp) {
         printf("Erro ao criar temp.csv\n");
         fclose(arquivo);
@@ -296,11 +296,11 @@ void editar_telefone_id(int id_pessoa) {
     fclose(temp);
 
     if (encontrado) {
-        remove("../dados/telefones.csv");
-        rename("../dados/temp.csv", "../dados/telefones.csv");
+        remove("dados/telefones.csv");
+        rename("dados/temp.csv", "dados/telefones.csv");
         printf("Telefone editado com sucesso!\n");
     } else {
-        remove("../dados/temp.csv");
+        remove("dados/temp.csv");
         printf("Telefone não encontrado para este ID.\n");
     }
 }
@@ -312,13 +312,13 @@ void excluir_telefone(char* nome) {
         return;
     }
 
-    FILE* arquivo = fopen("../dados/telefones.csv", "r");
+    FILE* arquivo = fopen("dados/telefones.csv", "r");
     if (!arquivo) {
         printf("Erro ao abrir telefones.csv\n");
         return;
     }
 
-    FILE* temp = fopen("../dados/temp.csv", "w+");
+    FILE* temp = fopen("dados/temp.csv", "w+");
     if (!temp) {
         printf("Erro ao criar temp.csv\n");
         fclose(arquivo);
@@ -353,23 +353,23 @@ void excluir_telefone(char* nome) {
     fclose(temp);
 
     if (encontrado) {
-        remove("../dados/telefones.csv");
-        rename("../dados/temp.csv", "../dados/telefones.csv");
+        remove("dados/telefones.csv");
+        rename("dados/temp.csv", "dados/telefones.csv");
         printf("Telefone excluido com sucesso!\n");
     } else {
-        remove("../dados/temp.csv");
+        remove("dados/temp.csv");
         printf("Telefone não encontrado para este ID.\n");
     }
 }
 
 void excluir_telefone_id(int id_pessoa) {
-    FILE* arquivo = fopen("../dados/telefones.csv", "r");
+    FILE* arquivo = fopen("dados/telefones.csv", "r");
     if (!arquivo) {
         printf("Erro ao abrir telefones.csv\n");
         return;
     }
 
-    FILE* temp = fopen("../dados/temp.csv", "w+");
+    FILE* temp = fopen("dados/temp.csv", "w+");
     if (!temp) {
         printf("Erro ao criar temp.csv\n");
         fclose(arquivo);
@@ -404,11 +404,11 @@ void excluir_telefone_id(int id_pessoa) {
     fclose(temp);
 
     if (encontrado) {
-        remove("../dados/telefones.csv");
-        rename("../dados/temp.csv", "../dados/telefones.csv");
+        remove("dados/telefones.csv");
+        rename("dados/temp.csv", "dados/telefones.csv");
         printf("Telefone excluido com sucesso!\n");
     } else {
-        remove("../dados/temp.csv");
+        remove("dados/temp.csv");
         printf("Telefone não encontrado para este ID.\n");
     }
 }
